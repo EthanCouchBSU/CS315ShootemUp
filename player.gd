@@ -12,7 +12,8 @@ func get_input():
 	
 func shoot():
 	var bullet = bullet_resource.instantiate()
-	add_child(bullet)
+	get_tree().root.get_child(0).add_child(bullet)
+	bullet.position = get_global_position()
 	
 	
 
