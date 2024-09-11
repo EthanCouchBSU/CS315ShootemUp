@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://myiw0eeqhsru"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_8xi2u"]
+[ext_resource type="PackedScene" uid="uid://cydk8fq1ut5m6" path="res://player.tscn" id="1_d7ugn"]
+[ext_resource type="PackedScene" uid="uid://caa6s5rq06q82" path="res://enemy.tscn" id="2_fug1k"]
+[ext_resource type="Script" path="res://enemy_spawn.gd" id="3_5tcc2"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8xi2u")
+
+[node name="player" parent="." instance=ExtResource("1_d7ugn")]
+position = Vector2(536, 521)
+
+[node name="enemy" parent="." instance=ExtResource("2_fug1k")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_right = 1150.0
+offset_bottom = 646.0
+metadata/_edit_lock_ = true
+
+[node name="enemySpawn" type="Node2D" parent="."]
+script = ExtResource("3_5tcc2")

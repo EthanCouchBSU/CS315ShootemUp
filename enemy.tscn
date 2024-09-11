@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://caa6s5rq06q82"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_2sy1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulhou"]
+size = Vector2(82, 81)
+
+[node name="enemy" type="Area2D"]
+position = Vector2(101, 31)
+script = ExtResource("1_2sy1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 34.5)
+shape = SubResource("RectangleShape2D_ulhou")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 71.0
+offset_bottom = 71.0
+color = Color(0.707928, 0.158603, 0.251963, 1)
+metadata/_edit_group_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

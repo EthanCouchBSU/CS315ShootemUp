@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://myiw0eeqhsru"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_8xi2u"]
+[ext_resource type="PackedScene" uid="uid://cydk8fq1ut5m6" path="res://player.tscn" id="1_d7ugn"]
+[ext_resource type="Script" path="res://enemy_spawn.gd" id="3_5tcc2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7birl"]
+line_spacing = 160.0
+font_size = 160
+font_color = Color(0, 0, 0, 1)
+
+[node name="main" type="Node2D" node_paths=PackedStringArray("text_score")]
+script = ExtResource("1_8xi2u")
+text_score = NodePath("Control/score")
+
+[node name="player" parent="." instance=ExtResource("1_d7ugn")]
+position = Vector2(536, 521)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_right = 1150.0
+offset_bottom = 646.0
+metadata/_edit_lock_ = true
+
+[node name="enemySpawn" type="Node2D" parent="."]
+script = ExtResource("3_5tcc2")
+
+[node name="Timer" type="Timer" parent="enemySpawn"]
+wait_time = 2.0
+autostart = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="score" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 162.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_7birl")
+
+[connection signal="timeout" from="enemySpawn/Timer" to="enemySpawn" method="_on_timer_timeout"]
